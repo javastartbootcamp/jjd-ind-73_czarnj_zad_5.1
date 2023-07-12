@@ -12,9 +12,9 @@ public class CoordinateSystem {
 
     private Point getPointFromUser(Scanner scanner) {
         System.out.println("Podaj x:");
-        double x = scanner.nextDouble();
+        int x = scanner.nextInt();
         System.out.println("Podaj y:");
-        double y = scanner.nextDouble();
+        int y = scanner.nextInt();
         return new Point(x, y);
     }
 
@@ -23,10 +23,10 @@ public class CoordinateSystem {
             if(point.getY() == 0)
                 return "Punkt (0, 0) leży na środku układu współrzędnych";
             else
-                return String.format("Punkt (0, %.1f) leży na osi Y", point.getY());
+                return String.format("Punkt (0, %d) leży na osi Y", point.getY());
         }
         else if(point.getY() == 0) {
-            return String.format("Punkt (%.1f, 0) leży na osi X", point.getX());
+            return String.format("Punkt (%d, 0) leży na osi X", point.getX());
         }
         else
             return getQuarterInfo(point);
@@ -35,18 +35,18 @@ public class CoordinateSystem {
     private String getQuarterInfo(Point point) {
         if(point.getX() > 0) {
             if(point.getY() > 0)
-                return String.format("Punkt (%.1f, %.1f) leży w I ćwiartce układu współrzędnych",
+                return String.format("Punkt (%d, %d) leży w I ćwiartce układu współrzędnych",
                         point.getX(), point.getY());
             else
-                return String.format("Punkt (%.1f, %.1f) leży w IV ćwiartce układu współrzędnych",
+                return String.format("Punkt (%d, %d) leży w IV ćwiartce układu współrzędnych",
                         point.getX(), point.getY());
         }
         else {
             if(point.getY() > 0)
-                return String.format("Punkt (%.1f, %.1f) leży w II ćwiartce układu współrzędnych",
+                return String.format("Punkt (%d, %d) leży w II ćwiartce układu współrzędnych",
                         point.getX(), point.getY());
             else
-                return String.format("Punkt (%.1f, %.1f) leży w III ćwiartce układu współrzędnych",
+                return String.format("Punkt (%d, %d) leży w III ćwiartce układu współrzędnych",
                         point.getX(), point.getY());
         }
     }
