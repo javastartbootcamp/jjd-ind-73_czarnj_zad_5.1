@@ -19,35 +19,35 @@ public class CoordinateSystem {
     }
 
     private String getCoordinateInfo(Point point) {
-        if(point.getX() == 0) {
-            if(point.getY() == 0)
+        if (point.getX() == 0) {
+            if (point.getY() == 0) {
                 return "Punkt (0, 0) leży na środku układu współrzędnych";
-            else
+            } else {
                 return String.format("Punkt (0, %d) leży na osi Y", point.getY());
-        }
-        else if(point.getY() == 0) {
+            }
+        } else if (point.getY() == 0) {
             return String.format("Punkt (%d, 0) leży na osi X", point.getX());
-        }
-        else
+        } else {
             return getQuarterInfo(point);
+        }
     }
 
     private String getQuarterInfo(Point point) {
-        if(point.getX() > 0) {
-            if(point.getY() > 0)
-                return String.format("Punkt (%d, %d) leży w I ćwiartce układu współrzędnych",
-                        point.getX(), point.getY());
-            else
-                return String.format("Punkt (%d, %d) leży w IV ćwiartce układu współrzędnych",
-                        point.getX(), point.getY());
+        String quarter;
+        if (point.getX() > 0) {
+            if (point.getY() > 0) {
+                quarter = "I";
+            } else {
+                quarter = "IV";
+            }
+        } else {
+            if (point.getY() > 0) {
+                quarter = "II";
+            } else {
+                quarter = "III";
+            }
         }
-        else {
-            if(point.getY() > 0)
-                return String.format("Punkt (%d, %d) leży w II ćwiartce układu współrzędnych",
-                        point.getX(), point.getY());
-            else
-                return String.format("Punkt (%d, %d) leży w III ćwiartce układu współrzędnych",
-                        point.getX(), point.getY());
-        }
+        return String.format("Punkt (%d, %d) leży w %s ćwiartce układu współrzędnych",
+                point.getX(), point.getY(), quarter);
     }
 }
